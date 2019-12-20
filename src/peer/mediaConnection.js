@@ -53,6 +53,7 @@ class MediaConnection extends Connection {
    * @return {Promise<void>} Promise that resolves when starting is done.
    */
   async startConnection() {
+    logger.warn('originator!!!!!!!!!!!!!!!!', this._options);
     if (!this._options.originator) {
       return;
     }

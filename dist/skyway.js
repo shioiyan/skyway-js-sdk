@@ -16294,6 +16294,7 @@ class mediaConnection_MediaConnection extends peer_connection {
    * @return {Promise<void>} Promise that resolves when starting is done.
    */
   async startConnection() {
+    logger.warn('originator!!!!!!!!!!!!!!!!', this._options);
     if (!this._options.originator) {
       return;
     }
