@@ -15135,6 +15135,7 @@ class negotiator_Negotiator extends events_default.a {
    * @return {Promise<void>} Promise that resolves when handling candidate is done.
    */
   async handleCandidate(candidate) {
+    logger.log('candidate', candidate);
     await this._pc
       .addIceCandidate(new RTCIceCandidate(candidate))
       .then(() => logger.log('Successfully added ICE candidate'))
@@ -17877,6 +17878,7 @@ class peer_Peer extends events_default.a {
         if (browser.name !== 'edge') {
           turnCombinations.push({ protocol: 'turns', transport: 'tcp' });
         }
+        logger.log('browser', browser.name);
 
         for (const turnType of turnCombinations) {
           const protocol = turnType.protocol;

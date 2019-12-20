@@ -472,6 +472,7 @@ class Peer extends EventEmitter {
         if (browser.name !== 'edge') {
           turnCombinations.push({ protocol: 'turns', transport: 'tcp' });
         }
+        logger.log('browser', browser.name);
 
         for (const turnType of turnCombinations) {
           const protocol = turnType.protocol;

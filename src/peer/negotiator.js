@@ -220,6 +220,7 @@ class Negotiator extends EventEmitter {
    * @return {Promise<void>} Promise that resolves when handling candidate is done.
    */
   async handleCandidate(candidate) {
+    logger.log('candidate', candidate);
     await this._pc
       .addIceCandidate(new RTCIceCandidate(candidate))
       .then(() => logger.log('Successfully added ICE candidate'))
