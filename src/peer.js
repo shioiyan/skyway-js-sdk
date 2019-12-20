@@ -497,7 +497,10 @@ class Peer extends EventEmitter {
           this._pcConfig.iceServers.push(iceServer);
         }
 
-        logger.log('SkyWay TURN Server is available', this._pcConfig.iceServer);
+        logger.log(
+          'SkyWay TURN Server is available',
+          this._pcConfig.iceServers
+        );
       } else {
         logger.log('SkyWay TURN Server is unavailable');
       }
