@@ -1,4 +1,5 @@
 import Enum from 'enum';
+import util from './util';
 
 const DISPATCHER_HOST = 'dispatcher.webrtc.ecl.ntt.com';
 const DISPATCHER_PORT = 443;
@@ -61,15 +62,20 @@ const sendInterval = 1;
 // Ping interval in milliseconds
 const pingInterval = 25000;
 
-const defaultConfig = {
-  iceServers: [
-    {
-      urls: 'stun:stun.webrtc.ecl.ntt.com:3478',
-      url: 'stun:stun.webrtc.ecl.ntt.com:3478',
-    },
-  ],
-  iceTransportPolicy: 'all',
-};
+const defaultConfig =
+  util.detectBrowser().name === 'edge'
+    ? {
+        iceTransportPolicy: 'all',
+      }
+    : {
+        iceServers: [
+          {
+            urls: 'stun:stun.webrtc.ecl.ntt.com:3478',
+            url: 'stun:stun.webrtc.ecl.ntt.com:3478',
+          },
+        ],
+        iceTransportPolicy: 'all',
+      };
 
 export default {
   DISPATCHER_HOST,

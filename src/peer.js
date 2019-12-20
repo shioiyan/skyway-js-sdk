@@ -477,13 +477,21 @@ class Peer extends EventEmitter {
           const protocol = turnType.protocol;
           const transport = turnType.transport;
 
-          const iceServer = {
-            urls: `${protocol}:${config.TURN_HOST}:${config.TURN_PORT}?transport=${transport}`,
-            url: `${protocol}:${config.TURN_HOST}:${config.TURN_PORT}?transport=${transport}`,
+          const iceServer =
+            browser.name !== 'edge'
+              ? {
+                  urls: `${protocol}:${config.TURN_HOST}:${config.TURN_PORT}?transport=${transport}`,
+                  url: `${protocol}:${config.TURN_HOST}:${config.TURN_PORT}?transport=${transport}`,
 
-            username: turnUserName,
-            credential: turnPassword,
-          };
+                  username: turnUserName,
+                  credential: turnPassword,
+                }
+              : {
+                  urls: `${protocol}:${config.TURN_HOST}:${config.TURN_PORT}?transport=${transport}`,
+
+                  username: turnUserName,
+                  credential: turnPassword,
+                };
 
           this._pcConfig.iceServers.push(iceServer);
         }
