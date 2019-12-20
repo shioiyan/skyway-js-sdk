@@ -650,6 +650,8 @@ class Peer extends EventEmitter {
           candidateMessage.connectionId
         );
 
+        logger.log('connection!!!!!', connection);
+        logger.log('candidateMessage!!!!!', candidateMessage);
         if (connection) {
           connection.handleCandidate(candidateMessage);
         } else {
