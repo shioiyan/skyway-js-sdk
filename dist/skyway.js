@@ -15140,7 +15140,7 @@ class negotiator_Negotiator extends events_default.a {
     logger.log('RTCIceCandidate', candidate);
     logger.log('RTCIceCandidate', new RTCIceCandidate(candidate).toJSON());
     await this._pc
-      .addIceCandidate(new RTCIceCandidate(candidate))
+      .addIceCandidate(new RTCIceCandidate(candidate).toJSON())
       .then(() => logger.log('Successfully added ICE candidate'))
       .catch(err => logger.error('Failed to add ICE candidate', err));
   }
